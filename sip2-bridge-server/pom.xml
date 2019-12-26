@@ -21,7 +21,7 @@ limitations under the License.
     <parent>
         <groupId>com.ceridwen.lcf</groupId>
         <artifactId>lcf-sip2-bridge</artifactId>
-        <version>1.2.0-import-initial-code-SNAPSHOT</version>
+        <version>1.2.0-SNAPSHOT</version>
     </parent>  
     <artifactId>sip2-bridge-server</artifactId>
     <packaging>war</packaging>
