@@ -20,7 +20,7 @@ limitations under the License.
 
     <groupId>com.ceridwen.lcf</groupId>
     <artifactId>sip2bridge</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.0-import-initial-code-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>lcfsip2bridge</name>
