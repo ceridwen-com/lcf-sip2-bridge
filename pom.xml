@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2019 Ceridwen Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ceridwen.lcf</groupId>
+    <artifactId>sip2bridge</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>lcfsip2bridge</name>
+    <description>
+    </description>
+    <inceptionYear>2017</inceptionYear>
+    <url>https://software.ceridwen.com/redmine/projects/lcf-sip2-bridge</url>
+    <organization>
+        <name>Ceridwen Limited</name>
+        <url>http://www.ceridwen.com</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <issueManagement>
+        <system>Redmine</system>
+        <url>https://software.ceridwen.com/redmine/projects/lcf-sip2-bridge/issues</url>
+    </issueManagement>
+
+    <scm>
+        <url>https://software.ceridwen.com/redmine/projects/lcf-sip2-bridge/repository</url>
+        <connection>scm:git:https://software.ceridwen.com/redmine/lcf-sip2-bridge.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <lcf.server.version>1.2.0-SNAPSHOT</lcf.server.version>
+        
+        <maven.min.version>3.5</maven.min.version>
+        <java.compiler.source>9</java.compiler.source>
+        <java.compiler.target>9</java.compiler.target>
+
+
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <prerequisites>
+        <maven>${maven.min.version}</maven>
+    </prerequisites> 
+
+    <repositories>
+        <repository>
+            <id>ceridwen-libs-release</id>
+            <name>Ceridwen Release Repository</name>
+            <url>https://software.ceridwen.com/artifactory/libs-release</url>
+        </repository>
+        <repository>
+            <id>ceridwen-libs-snapshot</id>
+            <name>Ceridwen Snapshot Repository</name>
+            <url>https://software.ceridwen.com/artifactory/libs-snapshot</url>
+        </repository>
+    </repositories>
+    
+    
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>3.0.0-M3</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-maven</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>${maven.min.version}</version>
+                                    </requireMavenVersion>
+                                </rules>    
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <source>${java.compiler.source}</source>
+                        <target>${java.compiler.target}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M4</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                            </manifest>
+<!--
+                            <manifestEntries>
+                                <Built-By>${user.name}</Built-By>
+                                <Build-Date>${maven.build.timestamp}</Build-Date>
+                            </manifestEntries>
+-->
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.2.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.1.1</version>
+                    <configuration>
+                        <failOnError>false</failOnError>
+                        <failOnWarnings>false</failOnWarnings>
+                        <quiet>true</quiet>
+                        <author>Ceridwen Limited</author>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.2.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.8.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>2.7</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.owasp</groupId>
+                    <artifactId>dependency-check-maven</artifactId>
+                    <version>5.2.4</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>                
+                <plugin>
+                    <groupId>com.amashchenko.maven.plugin</groupId>
+                    <artifactId>gitflow-maven-plugin</artifactId>
+                    <version>1.14.0</version>
+                    <configuration>
+                        <installProject>false</installProject>
+                        <verbose>false</verbose>
+                        <gitFlowConfig>
+                            <productionBranch>master</productionBranch>
+                            <developmentBranch>develop</developmentBranch>
+                            <featureBranchPrefix>feature/</featureBranchPrefix>
+                            <releaseBranchPrefix>release/${project.artifactId}-</releaseBranchPrefix>
+                            <hotfixBranchPrefix>hotfix/${project.artifactId}-</hotfixBranchPrefix>
+                            <supportBranchPrefix>support//${project.artifactId}-</supportBranchPrefix>
+                            <versionTagPrefix>version/${project.artifactId}-</versionTagPrefix>
+                            <origin>origin</origin>
+                        </gitFlowConfig>            
+                        <allowSnapshots>true</allowSnapshots>
+                        <keepBranch>true</keepBranch>
+                        <noDeploy>true</noDeploy>
+                        <suppressFastForward>true</suppressFastForward>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>9.4.25.v20191220</version>
+                    <configuration>
+                        <skip>true</skip>
+                        <webApp>
+                            <contextPath>/lcfserver</contextPath>
+                        </webApp>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.6.0</version>
+                    <executions>
+                        <execution>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>java</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+<!--
+        <plugins>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>    
+        </plugins>
+-->    
+        </build>
+
+    <modules>
+    </modules>
+
+</project>
