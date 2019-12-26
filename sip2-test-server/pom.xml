@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.ceridwen.lcf</groupId>
+    <artifactId>lcf-sip2-bridge</artifactId>
+    <version>1.2.0-import-initial-code-SNAPSHOT</version>
+  </parent>
+  <artifactId>sip2-test-server</artifactId>
+  <packaging>war</packaging>
+
+  <build>
+    <plugins> 
+      <plugin>
+        <groupId>org.codehaus.cargo</groupId>
+        <artifactId>cargo-maven2-plugin</artifactId>
+        <configuration>
+          <deployables>
+            <deployable>
+              <groupId>${project.parent.groupId}</groupId>
+              <artifactId>${project.artifactId}</artifactId>
+              <type>war</type>
+              <properties>
+                <context>sip2bridge-server</context>
+              </properties>              
+            </deployable>        
+          </deployables>
+        </configuration>
+      </plugin>
+    </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.ceridwen.circulation</groupId>
+            <artifactId>ceridwen-standard-interchange-protocol-library</artifactId>
+            <version>${ceridwen.sip2library.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>${javax.javaee-web-api-version}</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+</project>

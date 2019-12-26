@@ -19,11 +19,11 @@ limitations under the License.
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ceridwen.lcf</groupId>
-    <artifactId>sip2bridge</artifactId>
+    <artifactId>lcf-sip2-bridge</artifactId>
     <version>1.2.0-import-initial-code-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>lcfsip2bridge</name>
+    <name>lcf-sip2-bridge</name>
     <description>
     </description>
     <inceptionYear>2017</inceptionYear>
@@ -54,11 +54,16 @@ limitations under the License.
 
     <properties>
         <lcf.server.version>1.2.0-SNAPSHOT</lcf.server.version>
+        <ceridwen.sip2library.version>2.9.7</ceridwen.sip2library.version>
+        
+        <javax.javaee-web-api-version>8.0.1</javax.javaee-web-api-version>
+        <jersey.container.version>2.29.1</jersey.container.version>
+        <jersey.jaxb-runtime.version>2.4.0-b180830.0438</jersey.jaxb-runtime.version> 
+        
         
         <maven.min.version>3.5</maven.min.version>
         <java.compiler.source>9</java.compiler.source>
         <java.compiler.target>9</java.compiler.target>
-
 
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -195,6 +200,11 @@ limitations under the License.
                     <version>3.8.2</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.codehaus.cargo</groupId>
+                    <artifactId>cargo-maven2-plugin</artifactId>
+                    <version>1.7.9</version>
+                </plugin>
+                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
                     <version>2.7</version>
@@ -283,6 +293,9 @@ limitations under the License.
         </build>
 
     <modules>
+        <module>sip2-test-server</module>
+        <module>sip2-bridge</module>
+        <module>sip2-bridge-server</module>
     </modules>
 
 </project>
