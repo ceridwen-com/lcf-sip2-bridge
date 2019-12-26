@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<!-- Test SIP2 Server -->
+  <listener>
+    <listener-class>
+      com.ceridwen.sip2testserver.SIPServerContextListener
+    </listener-class>
+  </listener>
+  <env-entry>
+    <env-entry-name>SIP2_Server_Name</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>Test SIP2 Server</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>SIP2_Bind_IP</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>localhost</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>SIP2_Bind_Port</env-entry-name>
+    <env-entry-type>java.lang.Integer</env-entry-type>
+    <env-entry-value>55123</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>SIP2_Server_Backend</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>com.ceridwen.sip2testserver.driver.TestDriverFactory</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>SIP2_Checksum_Mode</env-entry-name>
+    <env-entry-type>java.lang.Boolean</env-entry-type>
+    <env-entry-value>true</env-entry-value>
+  </env-entry>
+<!-- ***  -->    
+
+<!-- Session configuration -->        
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+<!-- *** -->    
+</web-app>
